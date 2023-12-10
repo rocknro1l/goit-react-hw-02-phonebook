@@ -3,7 +3,7 @@ import ContactList from './ContactList/ContactList';
 import ContactInput from './ContactInput/ContactInput';
 import { nanoid } from 'nanoid';
 import { Form } from './App.styled';
-import SearchContact from '../SearchContact/SearchContact';
+import SearchContact from './SearchContact/SearchContact';
 
 export class App extends Component {
   state = {
@@ -22,7 +22,9 @@ export class App extends Component {
 
   filterContacts = () => {
     return this.state.contacts.filter(el =>
-      el.name.includes(this.state.filter)
+      el.name
+        .toLocaleLowerCase()
+        .includes(this.state.filter.toLocaleLowerCase())
     );
   };
 
